@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.56.10/gulimall_sms
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+#  自己类路径下的mapper中的所有xml文件
+#  classpath*:/mapper/**/*.xml 所有依赖的jar包中的xml文件
+  global-config:
+    db-config:
+      id-type: auto
+#      组件自增，id可以自增
+server:
+  port: 7000
