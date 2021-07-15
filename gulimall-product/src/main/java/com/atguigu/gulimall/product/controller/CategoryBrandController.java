@@ -1,6 +1,7 @@
 package com.atguigu.gulimall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -32,14 +33,15 @@ public class CategoryBrandController {
     private CategoryBrandService categoryBrandService;
 
     /**
-     * 列表
+     * 列表query all categories and child categories
+     * construct in tree structure
      */
-    @RequestMapping("/list")
+    @RequestMapping("/list/tree")
     //@RequiresPermissions("product:categorybrand:list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = categoryBrandService.queryPage(params);
-
-        return R.ok().put("page", page);
+    public R list(){
+        //List<CategoryBrandEntity> list = categoryBrandService.list();
+        List<CategoryBrandEntity> entities=categoryBrandService.listWithTree();
+        return R.ok().put("data", entities);
     }
 
 
